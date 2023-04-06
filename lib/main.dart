@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late Timer timer;                                                             //late == this variable will insilise later
   var timecontroller = TextEditingController();
 
+
   void startTimer(int value){
     counter = value;
 
@@ -44,8 +45,13 @@ class _MyHomePageState extends State<MyHomePage> {
       //where 1 second over state will changeed
       //and you will see time goes on decreasing
       setState(() {
-        if(counter>0)counter--;
-        else timer.cancel();
+        if(counter>0) {
+          FlameAudio.bgm.stop();
+          counter--;
+        } else {
+          FlameAudio.bgm.play('audio.mp3');
+          timer.cancel();
+        }
       });
     });
   }
