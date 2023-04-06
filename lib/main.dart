@@ -82,19 +82,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Colors.red,
-                shape: CircleBorder(),
-                fixedSize: Size(110, 110),
-              ),
-                child: Text("Start Timer",style: TextStyle(fontWeight: FontWeight.bold),),
-                onPressed: (){
-                  int value =int.parse(timecontroller.text.toString());
-                  startTimer(value);
-                }
-            )
-
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red,
+                      shape: CircleBorder(),
+                      fixedSize: Size(110, 110),
+                    ),
+                    child: Text("Start Timer",style: TextStyle(fontWeight: FontWeight.bold),),
+                    onPressed: (){
+                      int value =int.parse(timecontroller.text.toString());
+                      startTimer(value);
+                    }
+                ),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red,
+                    ),
+                    child: Text("STOP",style: TextStyle(fontWeight: FontWeight.bold),),
+                    onPressed: (){
+                      FlameAudio.bgm.stop();
+                    }
+                )
+              ],
+            ),
 
           ],
         ),
